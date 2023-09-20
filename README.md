@@ -1,6 +1,5 @@
 
 # University_Services 
-## done
 ## Description
 This is a simple Services application built with Node.js, Express, MongoDB and React.
 
