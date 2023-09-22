@@ -22,6 +22,7 @@ const registerController = asyncHandler(async(req,res)=>{
         userName : req.body.userName ,
         password : req.body.password,
         isAdmin : req.body.isAdmin,
+        answer : req.body.answer,
     });
 
    const result  =  await user.save();
@@ -59,7 +60,8 @@ const loginController = async (req, res) => {
         message: "login successfully",
         user: {
          userName: user.userName,
-          password: user.password
+          password: user.password,
+          answer: user.answer
         }
       });
     } catch (error) {
@@ -71,5 +73,43 @@ const loginController = async (req, res) => {
       });
     }
   };
+  //forgotPasswordController
 
-module.exports={loginController , registerController};
+const forgotPasswordController = async (req, res) => {
+    try {
+      const { userName, answer, newPassword } = req.body;
+      if (!userName) {
+        res.status(400).send({ message: "userName is required" });
+      }
+      if (!answer) {
+        res.status(400).send({ message: "answer is required" });
+      }
+      if (!newPassword) {
+        res.status(400).send({ message: "New Password is required" });
+      }
+      //check
+      const user = await userModel.findOne({ userName, answer });
+      //validation
+      if (!user) {
+        return res.status(404).send({
+          success: false,
+          message: "Wrong userName Or Answer",
+        });
+      }
+      const hashed = newPassword;
+      await userModel.findByIdAndUpdate(user._id, { password: hashed });
+      res.status(200).send({
+        success: true,
+        message: "Password Reset Successfully",
+      });
+    } catch (error) {
+      console.log(error);
+      res.status(500).send({
+        success: false,
+        message: "Something went wrong",
+        error,
+      });
+    }
+  };
+
+module.exports={loginController , registerController,forgotPasswordController};
