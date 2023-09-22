@@ -1,4 +1,4 @@
-const Joi = require('joi');
+const joi = require('joi');
 const mongoose = require('mongoose');
 
 
@@ -34,7 +34,7 @@ const userModel = mongoose.model('user', userSchema);
 
 
 function validateRegisterUser (obj){
-    const schema = Joi.object({
+    const schema = joi.object({
         email : joi.string().trim().min(5).max(100).required().email(), 
         userName : joi.string().trim().min(5).max(100).required(),
         password : joi.string().trim().min(6).required(),
@@ -44,7 +44,7 @@ function validateRegisterUser (obj){
 }
 
 function validateLoginUser (obj){
-    const schema = Joi.object({
+    const schema = joi.object({
  
         userName : joi.string().trim().min(5).max(100).required(),
         password : joi.string().trim().min(6).required(),

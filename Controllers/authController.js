@@ -1,11 +1,31 @@
 const express = require("express");
 const router  = express.Router() ;
-const userModel = require('../models/userModel');
+const asyncHandler = require("express-async-handler")
+const {userModel
+       ,validateRegisterUser
+       ,validateLoginUser} = require('../models/userModel');
 
 //register controller
-const registerController = async (req,res) =>{
-    
-}
+const registerController = asyncHandler(async(req,res)=>{
+    const { error }  = validateRegisterUser(req.body); 
+    if(error){
+        return res.status(400).json({message: error.details[0].message});
+    }
+    let user = await userModel.findOne({email : req.body.email});
+    if(user){
+        return res.status(400).json({message : "this user already registered"})
+    }
+
+    user = new userModel({
+        email : req.body.email ,
+        userName : req.body.userName ,
+        password : req.body.password,
+        isAdmin : req.body.isAdmin,
+    });
+
+   const result  =  await user.save();
+   res.status(201).json(result);
+});
 
 // login controller
 const loginController = async (req, res) => {
@@ -26,4 +46,4 @@ const loginController = async (req, res) => {
     }
 };
 
-module.exports={loginController};
+module.exports={loginController , registerController};
