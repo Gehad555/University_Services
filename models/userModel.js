@@ -1,7 +1,16 @@
+const Joi = require('joi');
 const mongoose = require('mongoose');
 
 
 const userSchema = new mongoose.Schema({
+    email:{
+        type:String,
+        required: [true, 'Please enter your email'],
+        trim : true  ,
+        minlength : 5 ,
+        maxlength : 100 ,
+        unique : true,
+    },
     userName: {
         type: String,
         required: [true, 'Please enter your name'],
@@ -10,10 +19,41 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: [true, 'Please enter your password'],
-        trim: true
+        trim: true,
+        minlength:6,
+    },
+    isAdmin:{
+        type : Boolean ,
+        default : false
     }
-});
+} , { timestamps : true });
+
+
 
 const userModel = mongoose.model('user', userSchema);
 
-module.exports ={userModel};
+
+function validateRegisterUser (obj){
+    const schema = Joi.object({
+        email : joi.string().trim().min(5).max(100).required().email(), 
+        userName : joi.string().trim().min(5).max(100).required(),
+        password : joi.string().trim().min(6).required(),
+        isAdmin : joi.bool(), 
+    });
+    return schema.validate(obj) ;
+}
+
+function validateLoginUser (obj){
+    const schema = Joi.object({
+ 
+        userName : joi.string().trim().min(5).max(100).required(),
+        password : joi.string().trim().min(6).required(),
+ 
+    });
+    return schema.validate(obj) ;
+}
+module.exports ={
+    userModel,
+    validateRegisterUser,
+    validateLoginUser
+};

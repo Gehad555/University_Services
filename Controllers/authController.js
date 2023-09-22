@@ -1,6 +1,11 @@
 const express = require("express");
 const router  = express.Router() ;
-const userModel = require('../Models/userModel');
+const userModel = require('../models/userModel');
+
+//register controller
+const registerController = async (req,res) =>{
+    
+}
 
 // login controller
 const loginController = async (req, res) => {
