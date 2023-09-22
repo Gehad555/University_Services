@@ -26,6 +26,13 @@ const userSchema = new mongoose.Schema({
         type : Boolean ,
         default : false
     }
+    ,
+    answer: {
+        type: String,
+        required: true,
+        trim: true
+      },
+
 } , { timestamps : true });
 
 
@@ -39,6 +46,7 @@ function validateRegisterUser (obj){
         userName : joi.string().trim().min(5).max(100).required(),
         password : joi.string().trim().min(6).required(),
         isAdmin : joi.bool(), 
+        answer: joi.string().trim().min(5).max(100).required(),
     });
     return schema.validate(obj) ;
 }
