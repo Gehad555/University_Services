@@ -1,14 +1,15 @@
 require('./Config/db')
 const express = require('express');
 const dotenv = require('dotenv');
-const app = express();
+const authRouter = require('./routes/authRoute');
 const mongoose = require('mongoose');
 
 const port = process.env.PORT || 5000;
 
-const authRouter = require('./routes/authRoute');
+
 dotenv.config();
 
+const app = express();
 app.use(express.json());
 app.use('/api/v1/auth', authRouter);
 
