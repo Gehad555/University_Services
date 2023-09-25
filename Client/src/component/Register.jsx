@@ -2,12 +2,16 @@ import axios from "axios";
 import Joi from "joi";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
+import style from "./styels/Register.module.css"
 const Register = () => {
   const navigate = useNavigate();
   const [isLoading, setisLoading] = useState(false);
-
   const [errorList, seterrorList] = useState([]);
+  const [passwordVisible, setPasswordVisible] = useState(false);
+
+  const hidePassword = () => {
+    setPasswordVisible(!passwordVisible);
+  };
   const [user, setuser] = useState({
     name: "",
     username: "",
@@ -68,54 +72,65 @@ const Register = () => {
   return (
     <>
       <div id={style.home} className="container-fluid bg-dark position-relative" style={{ height: "100vh" }}>
-        <div className="img position-absolute" style={{ top: "15px", right: "25px" }}>
-          <img width="100px" src="faculty-image-removebg-preview.png" alt="" />
-        </div>
-        <div className={style.content}>
-          <form className={style.form_main} action="">
-           
-            {errorList.map((err, ind) => {
-              if (ind === 1) {
-                return (
-                  <div key={ind} className="alert alert-danger">
-                    password invalid
+        <div className="w-100 h-100 d-flex justify-content-center align-items-center">
+          <div className={`container p-5 text-center ${style.form_main}`}>
+            <h4 className="text-white">Register</h4>
+            <form action="">
+              <div className="row row-cols-md-2 justify-content-between">
+                <div className="col">
+                  <label htmlFor="">user Name</label>
+                  <div className={style.inputContainer}>
+                    <i id={style.inputIcon} className="fa-regular fa-user"></i>
+                    <input onChange={getuser} placeholder="Username" id="username" name="username" className={style.inputField} type="text" />
                   </div>
-                );
-              } else {
-                return (
-                  <div key={ind} className="alert alert-danger">
-                    {err.message}
+                  <label htmlFor="">Email</label>
+                  <div className={style.inputContainer}>
+                    <i id={style.inputIcon} className="fa-regular fa-envelope"></i>
+                    <input onChange={getuser} placeholder="email" id="email" name="email" className={style.inputField} type="email" />
                   </div>
-                );
-              }
-            })}
-            <p className={style.heading}>Login</p>
-            <label htmlFor="">user Name</label>
-            <div className={style.inputContainer}>
-              <i id={style.inputIcon} className="fa-regular fa-user"></i>
-              <input onChange={getuser} placeholder="Username" id="username" name="username" className={style.inputField} type="text" />
-            </div>
-            <label htmlFor="">Password</label>
-
-            <div className={style.inputContainer2}>
-              <input onChange={getuser} placeholder="Password" id="password" name="password" className={style.inputField} type={passwordVisible ? 'text' : 'password'} />
-              <i id={style.inputIcon} className="fa-solid fa-lock"></i>
-             
-            </div>
-            <div className="d-flex w-100 my-3">
-              <button id={style.button}>Register</button>
+                  <label htmlFor="">Secret Word</label>
+                  <div className={style.inputContainer}>
+                    <i id={style.inputIcon} className="fa-solid fa-key"></i>
+                    <input onChange={getuser} placeholder="Secret Word" id="Secret Word" name="Secret Word" className={style.inputField} />
+                  </div>
+                </div>
+                <div className="col">
+                  <label htmlFor="">Password</label>
+                  <div className={style.inputContainer}>
+                    <input onChange={getuser} placeholder="Password" id="password" name="password" className={style.inputField} type={passwordVisible ? 'text' : 'password'} />
+                    <i id={style.inputIcon} className="fa-solid fa-lock"></i>
+                    {passwordVisible ? <i onClick={hidePassword} id={style.eye} className="fa-regular fa-eye-slash"></i> : <i onClick={hidePassword} id={style.eye} className="fa-regular fa-eye"></i>}
+                  </div>
+                  <label htmlFor="">Phone</label>
+                  <div className={style.inputContainer}>
+                    <i id={style.inputIcon} className="fa-solid fa-phone"></i>
+                    <input onChange={getuser} placeholder="phone" id="phone" name="phone" className={style.inputField} />
+                  </div>
+                  <label htmlFor="">Gender</label>
+                  <div className={`d-flex justify-content-around align-items-center px-5 my-5`}>
+                    <div className="d-flex align-items-center gap-3">
+                      <input type="checkbox" />
+                      <label htmlFor="">Male</label>
+                    </div>
+                    <div className="d-flex align-items-center gap-3">
+                      <input type="checkbox" />
+                      <label htmlFor="">Female</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+            <div className="d-flex justify-content-center align-items-center gap-3 my-3">
+              <button id={style.button}>Login</button>
               <button id={style.button1}>
-                {isLoading ? <i className="fas fa-spinner fa-spin"></i> : "Login"}
+                {isLoading ? <i className="fas fa-spinner fa-spin"></i> : "Register"}
               </button>
             </div>
-            <div className={style.signupContainer}>
-              <div className="d-flex align-items-center gap-2">
-                <input type="checkbox" name="" id="" />
-                <p htmlFor="">remember me</p>
-              </div>
-              <Link href="#">forget the password?</Link>
+            <div className="d-flex justify-content-center align-items-center gap-3 my-3">
+              <input type="checkbox" />
+              <b className="text-white fs-5" htmlFor="">remember me</b>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </>

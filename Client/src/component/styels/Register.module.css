@@ -12,31 +12,12 @@
   justify-content: center;
   align-items: center;
 }
+
 .form_main {
-  width: 600px;
-  height: 800px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   background-color: rgba(22, 65, 82, 0.8);
-  padding: 50px;
   border: 1px solid #57c6f2;
   border-radius: 50px;
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.062);
-}
-@media (max-width: 767px) {
-  .form_main {
-    width: 341px;
-    height: 610px;
-  }
-}
-
-.heading {
-  font-size: 2.5em;
-  color: white;
-  font-weight: 700;
-  margin: 15px 0 30px 0;
 }
 
 label {
@@ -53,8 +34,7 @@ label {
   color: #95abb4 !important;
 }
 
-.inputContainer,
-.inputContainer2 {
+.inputContainer {
   width: 100%;
   position: relative;
   display: flex;
@@ -105,12 +85,12 @@ label {
 #button,
 #button1 {
   position: relative;
-  width: 100%;
+  width: 20%;
   border: 2px solid #57c6f2;
   background-color: #57c6f2;
-  height: 40px;
+  padding: 10px;
   color: white;
-  font-size: 0.8em;
+  font-size: 20px;
   font-weight: 500;
   letter-spacing: 1px;
   border-radius: 30px;
@@ -194,4 +174,10 @@ label {
   a {
     font-size: 12px !important;
   }
-}/*# sourceMappingURL=log.module.css.map */
+}
+
+input[type=checkbox] {
+  height: 24px;
+  width: 24px;
+  border-radius: 50px;
+}/*# sourceMappingURL=Register.module.css.map */
