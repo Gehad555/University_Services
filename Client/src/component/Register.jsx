@@ -1,7 +1,7 @@
 import axios from "axios";
 import Joi from "joi";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -66,102 +66,59 @@ const Register = () => {
   }
 
   return (
-    <div>
-      <div className="container my-5 px-3">
-        <div className="">
-          <h2 className="my-5">Register Now</h2>
-          {errorList.map((err, ind) => {
-            if (ind === 4) {
-              return (
-                <div key={ind} className="alert alert-danger">
-                  fadaale password invalid
-                </div>
-              );
-            } else {
-              return (
-                <div key={ind} className="alert alert-danger">
-                  {err.message}
-                </div>
-              );
-            }
-          })}
-          <form className="py-0" onSubmit={subnitregister}>
-            <label className="fs-4" htmlFor="first_name">
-              name :
-            </label>
-            <input
-              // required={true}
-              onChange={getuser}
-              className="form-control p-3 mb-3 "
-              type="text"
-              name="name"
-              id="first_name"
-              value={user.name}
-            />
-            <label className="fs-4" htmlFor="Last_name">
-              user name :
-            </label>
-            <input
-              // required={true}
-              onChange={getuser}
-              className="form-control p-3 mb-3 "
-              type="text"
-              name="username"
-              id="age"
-              value={user.username}
-            />
-            <label className="fs-4" htmlFor="email">
-              email :
-            </label>
-            <input
-              // required={true}
-              onChange={getuser}
-              className="form-control p-3 mb-2 "
-              type="email"
-              name="email"
-              id="email"
-              value={user.email}
-            />
-            <label className="fs-4" htmlFor="password">
-              password :
-            </label>
-            <input
-              // required={true}
-              onChange={getuser}
-              className="form-control p-3 mb-2 "
-              type="password"
-              name="password"
-              id="passwordd"
-              value={user.password}
-            />
+    <>
+      <div id={style.home} className="container-fluid bg-dark position-relative" style={{ height: "100vh" }}>
+        <div className="img position-absolute" style={{ top: "15px", right: "25px" }}>
+          <img width="100px" src="faculty-image-removebg-preview.png" alt="" />
+        </div>
+        <div className={style.content}>
+          <form className={style.form_main} action="">
+           
+            {errorList.map((err, ind) => {
+              if (ind === 1) {
+                return (
+                  <div key={ind} className="alert alert-danger">
+                    password invalid
+                  </div>
+                );
+              } else {
+                return (
+                  <div key={ind} className="alert alert-danger">
+                    {err.message}
+                  </div>
+                );
+              }
+            })}
+            <p className={style.heading}>Login</p>
+            <label htmlFor="">user Name</label>
+            <div className={style.inputContainer}>
+              <i id={style.inputIcon} className="fa-regular fa-user"></i>
+              <input onChange={getuser} placeholder="Username" id="username" name="username" className={style.inputField} type="text" />
+            </div>
+            <label htmlFor="">Password</label>
 
-            <label className="fs-4" htmlFor="password">
-              profile_image :
-            </label>
-            <input
-              // required={true}
-              onChange={getuser}
-              className="form-control p-3 mb-2 "
-              type="text"
-              name="image"
-              id="image"
-              value={user.image}
-            />
-
-            <button
-              className="btn btn-outline-dark mt-3"
-              type="submit"
-            >
-              {isLoading ? (
-                <i className="fas fa-spinner fa-spin"></i>
-              ) : (
-                "register"
-              )}
-            </button>
+            <div className={style.inputContainer2}>
+              <input onChange={getuser} placeholder="Password" id="password" name="password" className={style.inputField} type={passwordVisible ? 'text' : 'password'} />
+              <i id={style.inputIcon} className="fa-solid fa-lock"></i>
+             
+            </div>
+            <div className="d-flex w-100 my-3">
+              <button id={style.button}>Register</button>
+              <button id={style.button1}>
+                {isLoading ? <i className="fas fa-spinner fa-spin"></i> : "Login"}
+              </button>
+            </div>
+            <div className={style.signupContainer}>
+              <div className="d-flex align-items-center gap-2">
+                <input type="checkbox" name="" id="" />
+                <p htmlFor="">remember me</p>
+              </div>
+              <Link href="#">forget the password?</Link>
+            </div>
           </form>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 export default Register;
