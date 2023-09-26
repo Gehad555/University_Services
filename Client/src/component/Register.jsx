@@ -1,7 +1,6 @@
 import axios from "axios";
-import Joi from "joi";
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import style from "./styels/Register.module.css"
 const Register = () => {
   const navigate = useNavigate();

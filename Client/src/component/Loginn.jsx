@@ -1,5 +1,4 @@
-import Joi, { required } from "joi";
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import style from "./styels/log.module.css"
@@ -12,7 +11,6 @@ const Loginn = () => {
     userName: "",
     password: "",
   });
-  const [alertfalse, setalertfalse] = useState(false);
   const [visible, setvisible] = useState(false)
   const getuser = (e) => {
     let myuser = { ...userDetails };
@@ -23,8 +21,6 @@ const Loginn = () => {
   function submitLogin(e) {
     e.preventDefault();
     setisLoading(true);
-    let validateForm = validateLogin(userDetails);
-
     axios
       .post("http://localhost:5000/api/v1/auth/login", userDetails)
       .then(function (response) {
@@ -38,21 +34,10 @@ const Loginn = () => {
         console.log(error.response.data.message);
         setisLoading(false);
         seterrorList(error.response.data.message);
-        setalertfalse(true);
         setvisible(true)
       });
   }
-  function validateLogin() {
-    let schema = Joi.object({
-      username: Joi.string().alphanum().min(3).max(8).required(),
-      password: Joi.string()
-        .pattern(new RegExp("^[a-zA-Z0-9]{5,10}$"))
-        .required(),
-    });
-    return schema.validate(userDetails, { abortEarly: false });
-  }
   const [passwordVisible, setPasswordVisible] = useState(false);
-
   const hidePassword = () => {
     setPasswordVisible(!passwordVisible);
   };
