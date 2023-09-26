@@ -32,17 +32,16 @@ const Loginn = () => {
         setisLoading(false);
         setvisible(true)
         seterrorList(response.data.message);
+
       })
       .catch(function (error) {
-        console.log(error.message);
+        console.log(error.response.data.message);
         setisLoading(false);
-        seterrorList(error.message.message);
+        seterrorList(error.response.data.message);
         setalertfalse(true);
         setvisible(true)
       });
-
   }
-  // console.log(userDetails);
   function validateLogin() {
     let schema = Joi.object({
       username: Joi.string().alphanum().min(3).max(8).required(),
@@ -63,7 +62,7 @@ const Loginn = () => {
         <div className="img position-absolute" style={{ top: "15px", right: "25px" }}>
           <img width="100px" src="faculty-image-removebg-preview.png" alt="" />
         </div>
-        {visible ? <div className="position-fixed z-3 bg-info p-3 rounded-3 d-flex align-items-center gap-4" style={{ bottom: '20px', right: "10px" }}>
+        {visible ? <div className="position-fixed z-3 bg-info py-2 px-4 shadow rounded-3 d-flex align-items-center gap-4" style={{ bottom: '20px', right: "10px" }}>
           <h5>{errorList}</h5>
           <i onClick={() => setvisible(false)} className="fa-solid fa-xmark-circle" style={{ cursor: "pointer" }}></i>
         </div> : ''}
@@ -83,7 +82,7 @@ const Loginn = () => {
               {passwordVisible ? <i onClick={hidePassword} id={style.eye} className="fa-regular fa-eye-slash"></i> : <i onClick={hidePassword} id={style.eye} className="fa-regular fa-eye"></i>}
             </div>
             <div className="d-flex w-100 my-3">
-              <button id={style.button}>Register</button>
+              <button onClick={() => navigate('/register')} id={style.button}>Register</button>
               <button id={style.button1}>
                 {isLoading ? <i className="fas fa-spinner fa-spin"></i> : "Login"}
               </button>

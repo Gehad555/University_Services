@@ -8,8 +8,10 @@ import Register from "./component/Register";
 function App() {
   return (
     <>
-      <Loginn />
       <Routes>
+        {["/", "login"].map((e, ind) => (
+          <Route path={e} element={<Loginn />} key={ind}/>
+        ))}
         <Route path="home" element={<Home />} />
         <Route path="register" element={<Register />} />
       </Routes>

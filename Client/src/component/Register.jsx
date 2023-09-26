@@ -8,6 +8,7 @@ const Register = () => {
   const [isLoading, setisLoading] = useState(false);
   const [errorList, seterrorList] = useState([]);
   const [passwordVisible, setpasswordVisible] = useState(false);
+  const [visible, setvisible] = useState(false)
   const hidepassword = () => {
     setpasswordVisible(!passwordVisible);
   };
@@ -35,11 +36,13 @@ const Register = () => {
         console.log(response);
         setisLoading(false);
         // navigate("/home");
+        setvisible(true)
         console.log('done');
       }).catch(function (error) {
         console.log(error.response.data.message);
-        seterrorList(error);
+        seterrorList(error.response.data.message);
         setisLoading(false);
+        setvisible(true)
         console.log('errrr');
       })
   }
@@ -50,6 +53,10 @@ const Register = () => {
           <div className="img position-absolute" style={{ top: "15px", right: "25px" }}>
             <img width="100px" src="faculty-image-removebg-preview.png" alt="" />
           </div>
+          {visible ? <div className="position-fixed z-3 bg-info py-2 px-4 shadow rounded-3 d-flex align-items-center gap-4" style={{ bottom: '20px', right: "10px" }}>
+            <h5>{errorList}</h5>
+            <i onClick={() => setvisible(false)} className="fa-solid fa-xmark-circle" style={{ cursor: "pointer" }}></i>
+          </div> : ''}
           <div className={`container p-5 text-center ${style.form_main}`}>
             <h4 className="text-white">Register</h4>
             <form action="" >
@@ -98,7 +105,7 @@ const Register = () => {
               </div>
             </form>
             <div className="d-flex justify-content-center align-items-center gap-3 my-3">
-              <button id={style.button}>Login</button>
+              <button onClick={() => navigate('/login')} id={style.button}>Login</button>
               <button onClick={submitregister} id={style.button1}>
                 {isLoading ? <i className="fas fa-spinner fa-spin"></i> : "Register"}
               </button>
