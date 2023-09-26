@@ -29,11 +29,9 @@ const Loginn = () => {
       .post("http://localhost:5000/api/v1/auth/login", userDetails)
       .then(function (response) {
         console.log(response.data);
-
         setisLoading(false);
         setvisible(true)
         seterrorList(response.data.message);
-
       })
       .catch(function (error) {
         console.log(error.message);
