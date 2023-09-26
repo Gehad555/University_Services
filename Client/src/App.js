@@ -8,7 +8,7 @@ import Register from "./component/Register";
 function App() {
   return (
     <>
-      {/* <Loginn /> */}
+      <Loginn />
       <Routes>
         <Route path="home" element={<Home />} />
         <Route path="register" element={<Register />} />

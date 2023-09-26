@@ -24,20 +24,12 @@ const Loginn = () => {
     e.preventDefault();
     setisLoading(true);
     let validateForm = validateLogin(userDetails);
-    // if (validateForm.error) {
-    //   setisLoading(false);
-    //   seterrorList(validateForm.error.details);
-    //   console.log('errrr');
-    //   console.log(errorList);
-    // } else {
+
     axios
       .post("http://localhost:5000/api/v1/auth/login", userDetails)
       .then(function (response) {
         console.log(response.data);
-        // localStorage.setItem("token", response.data.token);
-        // localStorage.setItem("user", JSON.stringify(response.data.user));
-        // navigate("/home");
-        // getUserData();
+
         setisLoading(false);
         setvisible(true)
         seterrorList(response.data.message);
