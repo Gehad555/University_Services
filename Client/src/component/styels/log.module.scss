@@ -58,6 +58,7 @@ label {
   font-size: 24px;
   width: 100%;
   color: white;
+  text-align: center;
 }
 ::placeholder {
   color: #95abb4 !important;
@@ -189,4 +190,8 @@ a {
   @include mediapoints(mobile) {
     font-size: 12px !important;
   }
+}
+input[type="checkbox"] {
+  height: 20px;
+  width: 20px;
 }

@@ -44,6 +44,7 @@ label {
   font-size: 24px;
   width: 100%;
   color: white;
+  text-align: center;
 }
 
 ::-moz-placeholder {
@@ -195,4 +196,9 @@ label {
   a {
     font-size: 12px !important;
   }
+}
+
+input[type=checkbox] {
+  height: 20px;
+  width: 20px;
 }/*# sourceMappingURL=log.module.css.map */
