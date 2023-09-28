@@ -34,7 +34,7 @@ const Register = () => {
       .then(function (response) {
         console.log(response);
         setisLoading(false);
-        // navigate("/home");
+        navigate("/login");
         setvisible(true)
         console.log('done');
       }).catch(function (error) {
