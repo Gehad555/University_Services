@@ -77,7 +77,7 @@ const Loginn = () => {
                 <input type="checkbox" name="" id="" />
                 <p htmlFor="">remember me</p>
               </div>
-              <Link href="#">forget the password?</Link>
+              <Link to='/forget'>forget the password?</Link>
             </div>
           </form>
         </div>

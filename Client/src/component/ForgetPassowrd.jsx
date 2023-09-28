@@ -9,7 +9,8 @@ const ForgetPassowrd = () => {
     const [errorList, seterrorList] = useState([]);
     const [userDetails, setuserDetails] = useState({
         userName: "",
-        password: "",
+        answer: "",
+        newPassword: ""
     });
     const [visible, setvisible] = useState(false)
     const getuser = (e) => {
@@ -18,17 +19,17 @@ const ForgetPassowrd = () => {
         setuserDetails(myuser);
         console.log(userDetails);
     };
-    function submitLogin(e) {
+    function submitReset(e) {
         e.preventDefault();
         setisLoading(true);
         axios
-            .post("http://localhost:5000/api/v1/auth/login", userDetails)
+            .post("http://localhost:5000/api/v1/auth/forgot-password", userDetails)
             .then(function (response) {
                 console.log(response.data);
                 setisLoading(false);
                 setvisible(true)
                 seterrorList(response.data.message);
-
+                navigate('/login')
             })
             .catch(function (error) {
                 console.log(error.response.data.message);
@@ -52,7 +53,7 @@ const ForgetPassowrd = () => {
                     <i onClick={() => setvisible(false)} className="fa-solid fa-xmark-circle" style={{ cursor: "pointer" }}></i>
                 </div> : ''}
                 <div className={style.content}>
-                    <form className={style.form_main} action="" onSubmit={submitLogin}>
+                    <form className={style.form_main} action="" onSubmit={submitReset}>
                         <p className={style.heading}>forget The password</p>
                         <label htmlFor="">user Name</label>
                         <div className={style.inputContainer}>
@@ -66,14 +67,13 @@ const ForgetPassowrd = () => {
                         </div>
                         <label htmlFor="">New Password</label>
                         <div className={style.inputContainer2}>
-                            <input onChange={getuser} placeholder="Password" id="password" name="password" required className={style.inputField} type={passwordVisible ? 'text' : 'password'} />
+                            <input onChange={getuser} placeholder="newPassword" id="newPassword" name="newPassword" required className={style.inputField} type={passwordVisible ? 'text' : 'password'} />
                             <i id={style.inputIcon} className="fa-solid fa-lock"></i>
                             {passwordVisible ? <i onClick={hidePassword} id={style.eye} className="fa-regular fa-eye-slash"></i> : <i onClick={hidePassword} id={style.eye} className="fa-regular fa-eye"></i>}
                         </div>
-                        <div className="d-flex w-100 my-3">
-                            <button onClick={() => navigate('/register')} id={style.button}>Register</button>
+                        <div className="w-50 my-3">
                             <button id={style.button1}>
-                                {isLoading ? <i className="fas fa-spinner fa-spin"></i> : "Login"}
+                                {isLoading ? <i className="fas fa-spinner fa-spin"></i> : "Reset"}
                             </button>
                         </div>
                         <div className="d-flex align-items-center gap-2">
