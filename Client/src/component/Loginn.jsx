@@ -28,6 +28,7 @@ const Loginn = () => {
         setisLoading(false);
         setvisible(true)
         seterrorList(response.data.message);
+        navigate("/home")
 
       })
       .catch(function (error) {
