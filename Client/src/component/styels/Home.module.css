@@ -1,3 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.home {
+  background-image: url("../../images/medium-shot-girl-portrait-with-graduation-background.jpg");
+  background-position: center;
+  background-size: cover;
+  height: 100%;
+}
 .inputBox_container {
   display: flex;
   align-items: center;
@@ -6,7 +16,6 @@
   background-color: #d9d9d9;
   border-radius: 0.8em;
   overflow: hidden;
-  width: 220px;
 }
 
 .search_icon {
@@ -37,12 +46,20 @@ a {
   border: 2px solid #57c6f2;
   transition: 0.3s;
 }
-a:nth-child(1) {
+#linkId a:nth-child(1) {
   background: #57c6f2;
 }
-a:nth-child(1):hover {
+#linkId a:nth-child(1):hover {
   background: white;
 }
 a:hover {
   background: #57c6f2;
+}
+
+.te {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  width: 40%;
+  transform: translate(0%, -50%);
 }
