@@ -11,7 +11,7 @@ const Home = () => {
             alt=""
             width={"100px"}
           />
-          <div id={style.linkId} className="d-flex align-items-center justify-content-center gap-4">
+          <div id={style.linkId} className="d-flex flex-column flex-md-row align-items-center justify-content-center gap-4">
             <Link>Home</Link>
             <Link>About Us</Link>
             <Link>About college</Link>
@@ -42,10 +42,11 @@ const Home = () => {
           facilis. Aliquam reiciendis, debitis consequatur vitae repellat
           voluptates voluptate ipsa perferendis voluptas ullam praesentium
           tenetur perspiciatis beatae itaque adipisci et facilis.
+          lore
         </p>
-        <div className="d-flex align-items-center justify-content-center gap-4 text-center">
-          <Link className="w-25">Login</Link>
-          <Link className="w-25">Register</Link>
+        <div className="d-flex align-items-center justify-content-center gap-5 text-center">
+          <Link className="px-5">Login</Link>
+          <Link className="px-5">Register</Link>
         </div>
       </div>
     </div>
