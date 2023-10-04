@@ -39,9 +39,11 @@
   color: #abb2bf;
 }
 a {
+  text-decoration: none !important;
+}
+#btn {
   background-color: white;
   padding: 8px 20px;
-  text-decoration: none !important;
   color: rgb(0, 0, 0) !important;
   border-radius: 50px;
   border: 2px solid #57c6f2;
@@ -53,7 +55,7 @@ a {
 #linkId a:nth-child(1):hover {
   background: white;
 }
-a:hover {
+#btn:hover {
   background: #57c6f2;
 }
 
@@ -81,4 +83,16 @@ a:hover {
   background-image: url("../../images/22f9571b3110512402bd51fc29e23e4d.jpg");
   background-position: center;
   background-size: cover;
+}
+#profile::before {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 3px;
+  background: rgb(80, 80, 80);
+  bottom: -1px;
+  transition: 0.5s;
+}
+#profile:hover::before {
+  width: 100%;
 }
