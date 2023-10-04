@@ -145,15 +145,15 @@ const Home = () => {
             </div>
             <div className="d-flex align-items-center gap-4 my-3">
               <i className="fa-brands fa-linkedin fs-3"></i>
-              <Link to='/https://www.linkedin.com/in/Sherry Ahmos /' id={style.profile} className="mb-1 text-black fs-5 position-relative">(6) Sherry Ahmos | LinkedIn</Link>
+              <Link to='/https://www.linkedin.com/in/sherry-ahmos-413a02222/' id={style.profile} className="mb-1 text-black fs-5 position-relative">(6) Sherry Ahmos | LinkedIn</Link>
             </div>
             <div className="d-flex align-items-center gap-4 my-3">
               <i className="fa-brands fa-linkedin fs-3"></i>
-              <Link to='/https://www.linkedin.com/in/Gehad Shalaby/' id={style.profile} className="mb-1 text-black fs-5 position-relative">(6) Gehad Shalaby | LinkedIn</Link>
+              <Link to='/https://www.linkedin.com/in/gehad-shalaby-7aa3b5250/' id={style.profile} className="mb-1 text-black fs-5 position-relative">(6) Gehad Shalaby | LinkedIn</Link>
             </div>
             <div className="d-flex align-items-center gap-4 my-3">
               <i className="fa-brands fa-linkedin fs-3"></i>
-              <Link to='/https://www.linkedin.com/in/Yasmeen Fakhri El_Azazi/' id={style.profile} className="mb-1 text-black fs-5 position-relative">(8) Yasmeen Fakhri El_Azazi | LinkedIn</Link>
+              <Link to='/https://www.linkedin.com/in/yasmeen-fakhri-el-azazi-0ab4a0244/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app' id={style.profile} className="mb-1 text-black fs-5 position-relative">(8) Yasmeen Fakhri El_Azazi | LinkedIn</Link>
             </div>
           </div>
           <div className="col-5">
