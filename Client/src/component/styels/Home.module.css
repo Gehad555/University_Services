@@ -2,6 +2,14 @@
   margin: 0;
   padding: 0;
 }
+::-webkit-scrollbar {
+  background-color: transparent;
+  width: 15px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #57c6f2;
+  border-radius: 15px;
+}
 .home {
   background-image: url("../../images/bg.jpg");
   background-position: center;
@@ -80,7 +88,7 @@ a {
   line-height: 29px;
 }
 .content {
-  background-image: url("../../images/22f9571b3110512402bd51fc29e23e4d.jpg");
+  background-image: url("../../images/fullbg.jpg");
   background-position: center;
   background-size: cover;
 }
