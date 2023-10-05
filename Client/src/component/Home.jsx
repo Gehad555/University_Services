@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <>
       <div className={style.home} style={{ height: "100vh" }}>
-        <nav className="navbar navbar-expand-lg bg-body-tertiary p-3">
+        <nav className="navbar navbar-expand-lg p-3">
           <div className="container-fluid" style={{ padding: "0 40px" }}>
             <img
               src="faculty-image-removebg-preview.png"
