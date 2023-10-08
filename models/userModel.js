@@ -31,6 +31,15 @@ const userSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
+    resetLink: {
+      type: String,
+      default: '',
+    },
+    token:{
+      type:String,
+      
+      default:'',
+    }
   },
   { timestamps: true }
 );
