@@ -5,7 +5,8 @@ const asyncHandler = require("express-async-handler")
 const { loginController , 
         registerController,
         forgotPasswordController,
-        resetPasswordController
+        getresetPasswordController,
+        postresetPasswordController
         } = require('../Controllers/authController');
 const { body } = require('express-validator');
 
@@ -20,7 +21,10 @@ router.post('/login', loginController);
 router.post('/forgotpassword', forgotPasswordController);
 
 // reset password router
-router.put('/resetpassword/:resetToken', resetPasswordController);
+router.get('/resetpassword/:userId/:token', getresetPasswordController);
+
+// reset password router
+router.post('/resetpassword/:userId/:token', postresetPasswordController);
 
 
 module.exports = router ;

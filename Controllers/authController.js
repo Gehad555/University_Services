@@ -16,7 +16,7 @@ const {userModel
        const JWT = require("jsonwebtoken");
 const e = require("express");
 const { config } = require("dotenv");
-const { c } = require("tar");
+const { c, u } = require("tar");
 const { error } = require("npmlog");
 const { boolean } = require("joi");
 
@@ -95,7 +95,7 @@ const registerController = asyncHandler(async(req,res)=>{
   }
 };
 //send reset password mail
-const sendresetpasswordmail  = async (userName,email,token , userId)=>{
+const sendresetpasswordmail  = async (userName,email,token , userId )=>{
   try{
 //pasword controller
 const transporter = nodemailer.createTransport({
@@ -107,9 +107,9 @@ const transporter = nodemailer.createTransport({
 });
 const mailOptions = {
   from: process.env.EMAIL,
-  to: "pursuit234@gmail.com",
+  to: email,
   subject: "Reset Password",
-  text: "<p> Hi "+ userName +",</p><p>You requested for password reset, kindly use this <a href='http://localhost:3000/reset-password/"+userId+token+"'>link</a> to reset your password</p><p>Cheers!</p>'"
+  text: `Hi ${userName} , Please click on the link to reset your password http://localhost:3000/reset-password/${userId}/${token}`,
 };
  
 transporter.sendMail(mailOptions, function(error, info){
@@ -132,39 +132,94 @@ transporter.sendMail(mailOptions, function(error, info){
 const forgotPasswordController = async(req,res)=>{
   try{
      const email = req.body.email;
-     const  userdate = userModel.findOne({email:email})
-      if(userdate){
-      const token = jwt.sign({email:email},process.env.JWT_SECRET,{expiresIn:"1h"});
-      console.log(token)
-      const update = await userModel.updateOne({email:email},{
-        resetPasswordToken:token,
-        resetPasswordExpire:Date.now()+3600000,
-
-      })
-      if(update){
-        sendresetpasswordmail(userdate.userName,userdate.email,token,userdate._id);
+     const  userdate = await userModel.findOne({email:email})
+      if(!userdate){
         res.status(200).send({
-          success : true ,
-          message : "Email sent successfully"
-        })
+          success: false,
+          message: "Email is not registerd",
+        });
       }
-    }else{
+      const secret = process.env.JWT_SECRET + userdate.password;
+      const token = jwt.sign({email:email,id:userdate.id},secret,{expiresIn:"15m"});
+      await sendresetpasswordmail(userdate.userName,userdate.email,token,userdate.id);
       res.status(200).send({
-        success : false ,
-        message : "user not found"
-      })
-    }
+        success: true,
+        message: "Email sent successfully",
+      });
+     
   } catch{
     res.status(200).send({
       success: false,
-      message: "Error in forgot password",
-      message:error.message,
+      message:error.message
     });
   }
 }
-//reset password controller
-const resetPasswordController = async(req,res)=>{
- 
+// reset password controller
+const getresetPasswordController = async(req,res)=>{
+  try{
+     const  userdate =  await userModel.findById(req.params.userId)
+      if(!userdate){
+        res.status(200).send({
+          success: false,
+          message: "Email is not registerd",
+        });
+      }
+      const secret = process.env.JWT_SECRET + userdate.password;
+      jwt.verify(req.params.token,secret,(error,decoded)=>{
+        if(error){
+          res.status(200).send({
+            success: false,
+            message: "Error in forgot password",
+            message:error.message,
+          });
+          console.log(error);
+        }
+        if(decoded){
+          res.status(200).send({
+            success: true,
+            message: "Password reset successfully",
+          });
+        }
+      })
+
+    }
+    catch{
+      res.status(200).send({
+        success: false,
+        message: "Error in forgot password",
+        message:error.message,
+      });
+      console.log(error);
+    }
+}
+const postresetPasswordController = async(req,res)=>{
+  // to do validation
+  const  userdate =  await userModel.findById(req.params.userId)
+   if(!userdate){
+     res.status(200).send({
+       success: false,
+       message: "Email is not registerd",
+     });
+   }
+   const secret = process.env.JWT_SECRET + userdate.password;
+   try{
+     jwt.verify(req.params.token,secret);
+     const salt = await bcrypt.genSalt(10);
+     req.body.password = await bcrypt.hash(req.body.password,salt);
+     userdate.password = req.body.password;
+      await userdate.save();
+      res.status(200).send({
+        success: true,
+        message: "Password reset successfully",
+      });
+   } catch{
+     res.status(200).send({
+       success: false,
+       message: "Error in forgot password",
+       message:error.message,
+     });
+     console.log(error);
+   } 
 }
 
-module.exports={loginController , registerController , forgotPasswordController ,resetPasswordController };
+module.exports={loginController , registerController , forgotPasswordController ,getresetPasswordController,postresetPasswordController };
