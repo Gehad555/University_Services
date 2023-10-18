@@ -223,3 +223,4 @@ const postresetPasswordController = async(req,res)=>{
 }
 
 module.exports={loginController , registerController , forgotPasswordController ,getresetPasswordController,postresetPasswordController };
+
