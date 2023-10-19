@@ -17,6 +17,7 @@ function validateCreateCategory(obj) {
     return schema.validate(obj);
   }
 const categoryModel = mongoose.model("category", categorySchema);
+
 module.exports = {
     categoryModel,
     validateCreateCategory

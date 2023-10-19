@@ -6,7 +6,7 @@ const bookRouter = require('./routes/bookRoute');
 const categoryRouter = require('./routes/categoryRoute');
 const mongoose = require('mongoose');
 const nodemailer = require('nodemailer'); 
-const port =  3000|| process.env.PORT || 4000;
+const port = 3000|| process.env.PORT || 4000;
 dotenv.config();
 const app = express();
 app.use(express.json());
