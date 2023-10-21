@@ -14,13 +14,15 @@
 }
 
 .form_main {
+  width: 600px;
+  height: 800px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: rgba(22, 65, 82, 0.8);
   padding: 50px;
-  border: 1px solid var(--blue);
+  border: 1px solid #57c6f2;
   border-radius: 50px;
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.062);
 }
@@ -53,7 +55,8 @@ label {
   color: #95abb4 !important;
 }
 
-.inputContainer {
+.inputContainer,
+.inputContainer2 {
   width: 100%;
   position: relative;
   display: flex;
@@ -75,7 +78,7 @@ label {
   width: 100%;
   height: 75px;
   background-color: transparent;
-  border: 2px solid var(--blue);
+  border: 2px solid #57c6f2;
   border-radius: 30px;
   margin: 10px 0;
   color: white;
@@ -101,11 +104,12 @@ label {
   font-weight: 500;
 }
 
+#button,
 #button1 {
   position: relative;
   width: 100%;
-  border: 2px solid var(--blue);
-  background-color: var(--blue);
+  border: 2px solid #57c6f2;
+  background-color: transparent;
   height: 40px;
   color: white;
   font-size: 0.8em;
@@ -116,13 +120,14 @@ label {
   cursor: pointer;
   overflow: hidden;
   transition: 0.3s;
-  padding: 0 1rem;
+  padding: 0 2rem;
 }
-#button1:hover {
-  border: 2px solid var(--blue);
-  background-color: transparent;
+
+#button:hover {
+  border: 2px solid #57c6f2;
+  background-color: #57c6f2;
 }
-#button1::after {
+#button::after {
   content: "";
   position: absolute;
   background-color: rgba(255, 255, 255, 0.253);
@@ -135,47 +140,15 @@ label {
   filter: blur(10px);
   transition-duration: 0.5s;
 }
-#button1:hover::after {
+
+#button:hover::after {
   transform: translateX(600px);
   transition-duration: 0.5s;
 }
-#Message_Success,
-#Message_false {
+#eye {
   position: absolute;
-  left: 50%;
-  top: 5%;
-  transform: translate(-50%);
-  padding: 1rem;
-  border: 3px solid var(--blue);
-}
-#Message_false {
-  border: 3px solid var(--red);
-}
-#Message_Success .icon,
-#Message_false .icon {
-  border: 3px solid var(--blue);
-  border-radius: 50%;
-  padding: 5px;
-}
-#Message_false .icon {
-  border: 3px solid var(--red);
-}
-#Message_Success .icon svg,
-#Message_false .icon svg {
-  font-size: 3rem;
-}
-#Message_Success .text h2,
-#Message_false .text h2 {
-  font-weight: 400 !important;
-}
-#Message_Success .text p {
-  color: var(--blue);
-}
-#Message_false .text p {
-  color: var(--red);
-}
-#Message_Success .close,
-#Message_false .close {
-  height: 100px;
-  font-size: 1rem;
+  right: 15px;
+  font-size: 20px;
+  color: #95abb4;
+  cursor: pointer;
 }

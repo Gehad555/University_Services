@@ -7,6 +7,10 @@ body {
   background-color: #f0ecff;
   position: relative !important;
 }
+:root {
+  --blue: #57c6f2;
+  --red: #e32424;
+}
 /* .form_main {
   width: 600px;
   height: 800px;
