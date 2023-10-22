@@ -6,10 +6,18 @@
 body {
   background-color: #f0ecff;
   position: relative !important;
+  font-family: "Inter", sans-serif;
 }
 :root {
   --blue: #57c6f2;
   --red: #e32424;
+}
+li {
+  list-style: none;
+}
+ul {
+  padding: 0;
+  margin: 0;
 }
 /* .form_main {
   width: 600px;

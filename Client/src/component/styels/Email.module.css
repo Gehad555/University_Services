@@ -108,8 +108,8 @@ label {
   background-color: var(--blue);
   height: 40px;
   color: white;
-  font-size: 0.8em;
-  font-weight: 500;
+  font-size: 1em;
+  font-weight: 600;
   letter-spacing: 1px;
   border-radius: 30px;
   margin: 10px;
@@ -155,7 +155,7 @@ label {
 #Message_false .icon {
   border: 3px solid var(--blue);
   border-radius: 50%;
-  padding: 5px;
+  padding: 0 10px;
 }
 #Message_false .icon {
   border: 3px solid var(--red);

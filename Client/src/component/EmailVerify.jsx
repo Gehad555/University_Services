@@ -4,7 +4,6 @@ import axios from "axios";
 import style from "./styels/Email.module.css";
 const EmailVerify = () => {
     const navigate = useNavigate();
-    // const { getUserData } = useContext(userContext);
     const [isLoading, setisLoading] = useState(false);
     const [errorList, seterrorList] = useState([]);
     const [userDetails, setuserDetails] = useState({
@@ -60,7 +59,7 @@ const EmailVerify = () => {
                             viewBox="0 0 448 512"
                         >
                             <path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z" />
-                        </svg>{" "}
+                        </svg>
                     </div>
                     <div className={style.text}>
                         <h2>Thank You</h2>
@@ -76,6 +75,7 @@ const EmailVerify = () => {
                         </svg>{" "}
                     </div>
                 </div>
+                {visible ? '' : ''}
                 <div
                     id={style.Message_false}
                     className="d-flex gap-4 align-items-center bg-white rounded-4"
@@ -91,7 +91,7 @@ const EmailVerify = () => {
                     </div>
                     <div className={style.text}>
                         <h2>ERROR</h2>
-                        <p className="fs-4">Some Thing Went Wrong please Try Again</p>
+                        <p className="fs-4">Something Went Wrong Please Try Again</p>
                     </div>
                     <div className={style.close}>
                         <svg
@@ -122,7 +122,7 @@ const EmailVerify = () => {
                                 type="email"
                             />
                         </div>
-                        <div className="my-3">
+                        <div>
                             <button id={style.button1}>
                                 {isLoading ? (
                                     <i className="fas fa-spinner fa-spin"></i>

@@ -50,7 +50,6 @@ a {
   text-decoration: none !important;
 }
 #btn {
-  background-color: white;
   padding: 8px 20px;
   color: rgb(0, 0, 0) !important;
   border-radius: 1.3rem;
@@ -65,6 +64,14 @@ a {
 }
 #btn:hover {
   background: #57c6f2;
+  color: white !important;
+}
+#linkId .pop_menu {
+  padding: 0;
+}
+#linkId .pop_menu li {
+  /* border-bottom: 1px solid var(--blue); */
+  padding: 8px 20px;
 }
 
 .data {

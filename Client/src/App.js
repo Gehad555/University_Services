@@ -6,6 +6,7 @@ import Register from "./component/Register";
 import ResetPassowrd from "./component/ResetPassowrd";
 import ForgetPass from "./component/ForgetPass";
 import EmailVerify from "./component/EmailVerify";
+import Books from "./component/Books";
 function App() {
   return (
     <>
@@ -18,6 +19,7 @@ function App() {
         <Route path="Reset" element={<ResetPassowrd />} />
         <Route path="forget" element={<ForgetPass />} />
         <Route path="emailVerify" element={<EmailVerify />} />
+        <Route path="books" element={<Books />} />
       </Routes>
     </>
   );
