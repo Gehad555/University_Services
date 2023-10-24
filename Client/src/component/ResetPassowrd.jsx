@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import style from "./styels/log.module.css"
-const ForgetPassowrd = () => {
+import style from "./styels/Reset.module.css"
+const ResetPassowrd = () => {
     const navigate = useNavigate();
     // const { getUserData } = useContext(userContext);
     const [isLoading, setisLoading] = useState(false);
     const [errorList, seterrorList] = useState([]);
     const [userDetails, setuserDetails] = useState({
-        userName: "",
-        answer: "",
         newPassword: ""
     });
     const [visible, setvisible] = useState(false)
@@ -54,25 +52,21 @@ const ForgetPassowrd = () => {
                 </div> : ''}
                 <div className={style.content}>
                     <form className={style.form_main} action="" onSubmit={submitReset}>
-                        <p className={style.heading}>forget The password</p>
-                        <label htmlFor="">user Name</label>
-                        <div className={style.inputContainer}>
-                            <i id={style.inputIcon} className="fa-regular fa-user"></i>
-                            <input onChange={getuser} placeholder="Username" id="username" name="userName" className={style.inputField} type="text" />
-                        </div>
-                        <label htmlFor="">Secret Word</label>
-                        <div className={style.inputContainer}>
-                            <i id={style.inputIcon} className="fa-solid fa-key"></i>
-                            <input onChange={getuser} placeholder="answer" id="answer" name="answer" className={style.inputField} />
-                        </div>
+                        <p className={style.heading}>Reset The password</p>
                         <label htmlFor="">New Password</label>
-                        <div className={style.inputContainer2}>
-                            <input onChange={getuser} placeholder="newPassword" id="newPassword" name="newPassword" required className={style.inputField} type={passwordVisible ? 'text' : 'password'} />
+                        <div className={style.inputContainer}>
+                            <input onChange={getuser} placeholder="Password" id="newPassword" name="newPassword" required className={style.inputField} type={passwordVisible ? 'text' : 'password'} />
                             <i id={style.inputIcon} className="fa-solid fa-lock"></i>
                             {passwordVisible ? <i onClick={hidePassword} id={style.eye} className="fa-regular fa-eye-slash"></i> : <i onClick={hidePassword} id={style.eye} className="fa-regular fa-eye"></i>}
                         </div>
-                        <div className="w-50 my-3">
-                            <button id={style.button1}>
+                        <label htmlFor="">Confirm Password</label>
+                        <div className={style.inputContainer}>
+                            <input onChange={getuser} placeholder="Confirm" id="newPassword" name="newPassword" required className={style.inputField} type={passwordVisible ? 'text' : 'password'} />
+                            <i id={style.inputIcon} className="fa-solid fa-lock"></i>
+                            {passwordVisible ? <i onClick={hidePassword} id={style.eye} className="fa-regular fa-eye-slash"></i> : <i onClick={hidePassword} id={style.eye} className="fa-regular fa-eye"></i>}
+                        </div>
+                        <div className="my-3">
+                            <button id={style.button}>
                                 {isLoading ? <i className="fas fa-spinner fa-spin"></i> : "Reset"}
                             </button>
                         </div>
@@ -87,5 +81,5 @@ const ForgetPassowrd = () => {
     );
 };
 
-export default ForgetPassowrd;
+export default ResetPassowrd;
 

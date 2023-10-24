@@ -1,34 +1,26 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+#home {
+  background-image: url("../../images/background.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-body {
-  background-color: #f0ecff;
-  position: relative !important;
-  font-family: "Inter", sans-serif;
+
+.content {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-:root {
-  --blue: #57c6f2;
-  --red: #e32424;
-}
-li {
-  list-style: none;
-}
-ul {
-  padding: 0;
-  margin: 0;
-}
-/* .form_main {
-  width: 600px;
-  height: 800px;
+
+.form_main {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: rgb(22 65 82 / 80%);
+  background-color: rgba(22, 65, 82, 0.8);
   padding: 50px;
-  border: 1px solid #57c6f2;
+  border: 1px solid var(--blue);
   border-radius: 50px;
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.062);
 }
@@ -37,24 +29,31 @@ ul {
     width: 341px;
     height: 610px;
   }
-}s
+}
+
 .heading {
   font-size: 2.5em;
   color: white;
   font-weight: 700;
   margin: 15px 0 30px 0;
 }
+
 label {
   font-size: 24px;
   width: 100%;
-  margin-bottom: 5px;
   color: white;
+  text-align: center;
 }
+
+::-moz-placeholder {
+  color: #95abb4 !important;
+}
+
 ::placeholder {
   color: #95abb4 !important;
 }
-.inputContainer,
-.inputContainer2 {
+
+.inputContainer {
   width: 100%;
   position: relative;
   display: flex;
@@ -64,7 +63,7 @@ label {
   margin: 20px 0;
 }
 
-.inputIcon {
+#inputIcon {
   position: absolute;
   left: 10px;
   top: 40px;
@@ -76,7 +75,7 @@ label {
   width: 100%;
   height: 75px;
   background-color: transparent;
-  border: 2px solid #57c6f2;
+  border: 2px solid var(--blue);
   border-radius: 30px;
   margin: 10px 0;
   color: white;
@@ -90,41 +89,39 @@ label {
   outline: none;
 }
 
+.inputField::-moz-placeholder {
+  color: rgb(80, 80, 80);
+  font-size: 1em;
+  font-weight: 500;
+}
+
 .inputField::placeholder {
   color: rgb(80, 80, 80);
   font-size: 1em;
   font-weight: 500;
 }
 
-#button,
 #button1 {
   position: relative;
   width: 100%;
-  border: 2px solid #57c6f2;
-  background-color: #57c6f2;
+  border: 2px solid var(--blue);
+  background-color: var(--blue);
   height: 40px;
   color: white;
-  font-size: 0.8em;
-  font-weight: 500;
+  font-size: 1em;
+  font-weight: 600;
   letter-spacing: 1px;
   border-radius: 30px;
   margin: 10px;
   cursor: pointer;
   overflow: hidden;
   transition: 0.3s;
-}
-#button {
-  background-color: transparent;
-}
-#button:hover {
-  border: 2px solid #57c6f2;
-  background-color: #57c6f2;
+  padding: 0 1rem;
 }
 #button1:hover {
-  border: 2px solid #57c6f2;
+  border: 2px solid var(--blue);
   background-color: transparent;
 }
-#button::after,
 #button1::after {
   content: "";
   position: absolute;
@@ -138,38 +135,48 @@ label {
   filter: blur(10px);
   transition-duration: 0.5s;
 }
-
-#button:hover::after,
 #button1:hover::after {
   transform: translateX(600px);
   transition-duration: 0.5s;
 }
-
-.signupContainer {
-  margin: 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.signupContainer p {
-  margin-bottom: 4px;
-  font-weight: 400;
-  font-size: 20px;
-  color: white;
-}
-
-.signupContainer a {
-  font-size: 16px;
-  font-weight: 400;
-  color: white;
-  text-decoration: none;
-}
-
-#eye {
+#Message_Success,
+#Message_false {
   position: absolute;
-  right: 15px;
-  font-size: 20px;
-  color: #95abb4;
-} */
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1rem;
+  border: 3px solid var(--blue);
+  z-index: 10;
+}
+#Message_false {
+  border: 3px solid var(--red);
+}
+#Message_Success .icon,
+#Message_false .icon {
+  border: 3px solid var(--blue);
+  border-radius: 50%;
+  padding: 0 10px;
+}
+#Message_false .icon {
+  border: 3px solid var(--red);
+}
+#Message_Success .icon svg,
+#Message_false .icon svg {
+  font-size: 3rem;
+}
+#Message_Success .text h2,
+#Message_false .text h2 {
+  font-weight: 400 !important;
+}
+#Message_Success .text p {
+  color: var(--blue);
+}
+#Message_false .text p {
+  color: var(--red);
+}
+#Message_Success .close,
+#Message_false .close {
+  height: 100px;
+  font-size: 1rem;
+}

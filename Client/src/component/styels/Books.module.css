@@ -1,0 +1,92 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+::-webkit-scrollbar {
+  background-color: transparent;
+  width: 15px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #57c6f2;
+  border-radius: 15px;
+}
+body {
+  background-color: white !important;
+}
+a {
+  text-decoration: none !important;
+}
+#btn {
+  padding: 8px 20px;
+  color: rgb(0, 0, 0) !important;
+  border-radius: 1.3rem;
+  border: 2px solid #57c6f2;
+  cursor: pointer;
+  transition: 0.3s;
+}
+#btn:hover {
+  background: #57c6f2;
+  color: white !important;
+}
+.popup {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  right: -8.5rem;
+  background-color: transparent;
+  text-align: center;
+  border: 1px solid var(--blue);
+  border-radius: 10px;
+  background-color: white;
+  transition: 0.3s;
+  z-index: 10;
+}
+
+.popup::after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: -33px;
+  border: 1rem solid transparent;
+  border-right-color: var(--blue);
+}
+.popup li {
+  font-size: 1.5rem;
+  padding: 12px;
+  border-bottom: 1px solid var(--blue);
+  transition: 0.3s;
+  cursor: pointer;
+}
+.popup li:hover {
+  background-color: var(--blue);
+}
+.popup li:last-child {
+  border-bottom: none;
+}
+.popup li a {
+  color: var(--blue);
+  transition: 0.3s;
+}
+.popup li:hover a {
+  color: white;
+}
+#card {
+  border: 2px solid var(--blue);
+}
+#button {
+  position: relative;
+  border: 2px solid #57c6f2;
+  background-color: transparent;
+  letter-spacing: 1px;
+  border-radius: 30px;
+  margin: 10px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: 0.3s;
+}
+#button:hover {
+  border: 2px solid #57c6f2;
+  background-color: #57c6f2;
+  color: white;
+}
