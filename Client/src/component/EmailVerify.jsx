@@ -50,7 +50,7 @@ const EmailVerify = () => {
                 </div>
                 <div
                     id={style.Message_Success}
-                    className="d-flex gap-4 align-items-center bg-white rounded-4"
+                    className="d-flex gap-4 align-items-center bg-white rounded-4 shadow"
                 >
                     <div className={style.icon}>
                         <svg
@@ -78,7 +78,7 @@ const EmailVerify = () => {
                 {visible ? '' : ''}
                 <div
                     id={style.Message_false}
-                    className="d-flex gap-4 align-items-center bg-white rounded-4"
+                    className="d-flex gap-4 align-items-center bg-white rounded-4 shadow"
                 >
                     <div className={style.icon}>
                         <svg

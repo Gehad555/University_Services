@@ -47,7 +47,7 @@
   color: #abb2bf;
 }
 a {
-  text-decoration: none !important;
+  all: unset;
 }
 #btn {
   padding: 8px 20px;
@@ -55,25 +55,55 @@ a {
   border-radius: 1.3rem;
   border: 2px solid #57c6f2;
   transition: 0.3s;
-}
-#linkId a:nth-child(1) {
-  background: #57c6f2;
-}
-#linkId a:nth-child(1):hover {
-  background: white;
+  cursor: pointer;
 }
 #btn:hover {
   background: #57c6f2;
   color: white !important;
 }
-#linkId .pop_menu {
-  padding: 0;
-}
-#linkId .pop_menu li {
-  /* border-bottom: 1px solid var(--blue); */
-  padding: 8px 20px;
+.popup {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  right: -8.5rem;
+  background-color: transparent;
+  text-align: center;
+  border: 1px solid var(--blue);
+  border-radius: 10px;
+  background-color: white;
+  transition: 0.3s;
+  z-index: 10;
 }
 
+.popup::after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: -33px;
+  border: 1rem solid transparent;
+  border-right-color: var(--blue);
+}
+.popup li {
+  font-size: 1.5rem;
+  padding: 12px;
+  border-bottom: 1px solid var(--blue);
+  transition: 0.3s;
+  cursor: pointer;
+}
+.popup li:hover {
+  background-color: var(--blue);
+}
+.popup li:last-child {
+  border-bottom: none;
+}
+.popup li a {
+  color: var(--blue);
+  transition: 0.3s;
+}
+.popup li:hover a {
+  color: white;
+}
 .data {
   position: absolute;
   top: 50%;
