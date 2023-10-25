@@ -16,7 +16,8 @@ function App() {
         ))}
         <Route path="home" element={<Home />} />
         <Route path="register" element={<Register />} />
-        <Route path="Reset" element={<ResetPassowrd />} />
+        {/* <Route path="reset-password" element={<ResetPassowrd />} /> */}
+        <Route path="reset-password/:id/:token" element={<ResetPassowrd />} />
         <Route path="forget" element={<ForgetPass />} />
         <Route path="emailVerify" element={<EmailVerify />} />
         <Route path="books" element={<Books />} />

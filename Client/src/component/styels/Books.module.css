@@ -33,7 +33,7 @@ a {
   flex-direction: column;
   position: absolute;
   top: 0;
-  right: -8.5rem;
+  right: -6.9rem;
   background-color: transparent;
   text-align: center;
   border: 1px solid var(--blue);
@@ -47,12 +47,12 @@ a {
   content: "";
   position: absolute;
   top: 5px;
-  left: -33px;
+  left: -31px;
   border: 1rem solid transparent;
   border-right-color: var(--blue);
 }
 .popup li {
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   padding: 12px;
   border-bottom: 1px solid var(--blue);
   transition: 0.3s;
