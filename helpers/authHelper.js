@@ -14,3 +14,5 @@ const bcrypt = require("bcrypt");
    return await password === hashedPassword;  
 };
 module.exports = { hashPassword, comparePassword };
+
+

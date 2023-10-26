@@ -109,9 +109,8 @@ const mailOptions = {
   from: process.env.EMAIL,
   to: email,
   subject: "Reset Password",
-  text: `Hi ${userName} , Please click on the link to reset your password http://localhost:3000/reset-password/${userId}/${token}`,
+  text: `Hi ${userName} , Please click on the link to reset your password http://localhost:3000/api/v1/auth/reset_password/${userId}/${token}`,
 };
- 
 transporter.sendMail(mailOptions, function(error, info){
   if (error) {
     console.log(error);
@@ -195,6 +194,7 @@ const getresetPasswordController = async(req,res)=>{
 const postresetPasswordController = async(req,res)=>{
   // to do validation
   const  userdate =  await userModel.findById(req.params.userId)
+
    if(!userdate){
      res.status(200).send({
        success: false,

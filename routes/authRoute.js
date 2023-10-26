@@ -21,10 +21,10 @@ router.post('/login', loginController);
 router.post('/forgotpassword', forgotPasswordController);
 
 // reset password router
-router.get('/resetpassword/:userId/:token', getresetPasswordController);
+router.get('/reset_password/:userId/:token', getresetPasswordController);
 
 // reset password router
-router.post('/resetpassword/:userId/:token', postresetPasswordController);
+router.post('/reset_password/:userId/:token', postresetPasswordController);
 
 
 module.exports = router ;
